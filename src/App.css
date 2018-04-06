@@ -1,0 +1,41 @@
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  background-color: beige;
+  padding: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: center;
+  background-color: cadetblue;
+}
+
+.uml {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 5;
+}
+
+#codearea {
+  flex: 3;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.footer {
+  background-color: bisque;
+  text-align: center;
+  padding: 10px;
+}
