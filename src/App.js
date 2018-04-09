@@ -35,7 +35,6 @@ class App extends Component {
       .then(y => {
         console.log('Yjs instance ready!')
         this.handleTextUpdate(y.share.editorText.toString())
-
         y.share.editorText.bind(document.querySelector('textarea'))
         y.share.editorText.observe(event => {
           this.handleTextUpdate(event.object.toString())
@@ -57,7 +56,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <div className="header">わいわいUML!</div>
+        <nav className="header">わいわいUML!</nav>
         <div className="container">
           <textarea id="codearea" />
           <div className="uml">

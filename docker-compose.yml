@@ -6,6 +6,9 @@ services:
     build: ./
     ports: 
       - "80:5000"
+    depends_on:
+      - puml
+      - signal
 
   signal:
     container_name: waiwai-signal

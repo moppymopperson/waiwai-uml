@@ -5,9 +5,11 @@
 }
 
 .header {
-  text-align: center;
-  background-color: beige;
-  padding: 10px;
+  position: sticky;
+  text-align: start;
+  color: white;
+  background-color: rgb(0, 120, 191);
+  padding: 4px 0px 4px 12px;
 }
 
 .container {
@@ -15,7 +17,7 @@
   flex-direction: row;
   flex: 1;
   justify-content: center;
-  background-color: cadetblue;
+  background-color: rgb(244, 248, 250);
 }
 
 .uml {
@@ -26,7 +28,13 @@
 }
 
 #codearea {
-  flex: 3;
+  width: 30%;
+  border: none;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  margin-right: 12px;
+  padding: 4px;
+  resize: horizontal;
+  font-size: 1em;
 }
 
 img {
@@ -35,7 +43,9 @@ img {
 }
 
 .footer {
-  background-color: bisque;
+  color: white;
+  background-color: rgb(0, 120, 191);
   text-align: center;
-  padding: 10px;
+  font-size: 10px;
+  padding: 4px;
 }
