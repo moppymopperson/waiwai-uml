@@ -1,0 +1,21 @@
+# This species the deployment for WaiWaiUML
+version: '3'
+services:
+  web:
+    container_name: waiwai-web
+    build: ./
+    ports: 
+      - "80:5000"
+
+  signal:
+    container_name: waiwai-signal
+    build: ./signal-server
+    ports:
+      - "1234:1234"
+
+  puml:
+    container_name: waiwai-puml
+    image: plantuml/plantuml-server:jetty
+    ports:
+      - "8080:8080"
+
