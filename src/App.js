@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './App.css'
 import plantumlEncoder from 'plantuml-encoder'
-import Y from './yjs/y'
-import yWebsocketsClient from './y-websockets-client/src/Websockets-client'
-import yMemory from './y-memory/src/Memory'
-import yArray from './y-array/src/Array'
-import yText from './y-text/src/Text'
-import yMap from './y-map/src/Map'
+import Y from '../node_modules/yjs/dist/y.js'
+import yWebsocketsClient from '../node_modules/y-websockets-client/dist/y-websockets-client.js'
+import yMemory from '../node_modules/y-memory/dist/y-memory.js'
+import yArray from '../node_modules/y-array/dist/y-array.js'
+import yText from '../node_modules/y-text/dist/y-text.js'
+import yMap from '../node_modules/y-map/dist/y-map.js'
 Y.extend(yMap, yArray, yText, yWebsocketsClient, yMemory)
 
 class App extends Component {
