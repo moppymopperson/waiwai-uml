@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { UnControlled as ReactCodeMirror } from 'react-codemirror2'
+import 'codemirror/lib/codemirror.css'
+import 'codemirror/mode/markdown/markdown'
 import './App.css'
 import icon from './kangaroo-128.png'
 import plantumlEncoder from 'plantuml-encoder'
@@ -46,12 +49,13 @@ class App extends Component {
       .then(y => {
         console.log('Yjs instance ready!')
         this.handleTextUpdate(y.share.editorText.toString())
-        y.share.editorText.bind(document.querySelector('textarea'))
+        y.share.editorText.bind(this.editor)
         y.share.editorText.observe(event => {
           this.handleTextUpdate(event.object.toString())
         })
       })
       .catch(e => {
+        console.error('Failed to setup Y-js')
         console.log(e)
       })
   }
@@ -59,28 +63,41 @@ class App extends Component {
   handleTextUpdate(text) {
     const encodedUml = plantumlEncoder.encode(this.plantUmlStyling() + text)
     this.setState({ encodedUml })
-    console.log(
-      `http://${window.location.hostname}:8080/svg/${this.state.encodedUml}`
-    )
+    console.log(`http://${window.location.hostname}:8080/svg/${encodedUml}`)
+  }
+
+  codeOptions() {
+    return {
+      mode: 'markdown',
+      lineNumbers: true,
+      tabSize: 2,
+      autoCloseBrackets: true
+    }
   }
 
   render() {
     return (
       <div className="app">
-        <nav className="header"><div><img src={icon} height={24} alt={'icon'}/><div>わいわい UML!</div></div></nav>
+        <nav className="header"><div><img src={icon} height={24} alt={'icon'} /><div>わいわい UML!</div></div></nav>
         <div className="container">
-          <textarea id="codearea" onChange={event => this.handleTextUpdate(event.target.value)}/>
+          <ReactCodeMirror
+            value={this.state.code}
+            options={this.codeOptions()}
+            editorDidMount={editor => {
+              this.editor = editor
+            }}
+          />
           <div className="uml">
             <img
               src={`http://${window.location.hostname}:8080/svg/${
                 this.state.encodedUml
-              }`}
+                }`}
               alt="uml here"
             />
           </div>
         </div>
         <div className="footer"><div><a href="http://plantuml.com/class-diagram" target="_blank" rel="noopener noreferrer">Markdown Cheat Sheet</a></div>
-        Copyright Erik Hornberger, EExT LLC, 2018</div>
+          Copyright Erik Hornberger, EExT LLC, 2018</div>
       </div>
     )
   }
