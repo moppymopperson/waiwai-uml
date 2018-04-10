@@ -3,5 +3,5 @@ FROM node
 RUN npm install -g serve
 ADD . /waiwai-web
 WORKDIR /waiwai-web
-RUN yarn build
+RUN yarn install && yarn build
 CMD serve -s build
