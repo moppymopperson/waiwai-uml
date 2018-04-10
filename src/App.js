@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
+import icon from './kangaroo-128.png'
 import plantumlEncoder from 'plantuml-encoder'
 import Y from '../node_modules/yjs/dist/y.js'
 import yWebsocketsClient from '../node_modules/y-websockets-client/dist/y-websockets-client.js'
@@ -66,7 +67,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <nav className="header">わいわいUML!</nav>
+        <nav className="header"><div><img src={icon} height={24} alt={'icon'}/><div>わいわい UML!</div></div></nav>
         <div className="container">
           <textarea id="codearea" onChange={event => this.handleTextUpdate(event.target.value)}/>
           <div className="uml">
