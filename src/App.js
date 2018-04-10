@@ -16,6 +16,16 @@ class App extends Component {
     this.joinRoom()
   }
 
+  plantUmlStyling() {
+    return `
+    skinparam class {
+      ArrowColor #0078BF
+      BorderColor #0078BF
+      BackgroundColor White
+    }
+    `
+  }
+
   joinRoom() {
     console.log('Joining...')
     Y({
@@ -46,7 +56,7 @@ class App extends Component {
   }
 
   handleTextUpdate(text) {
-    const encodedUml = plantumlEncoder.encode(text)
+    const encodedUml = plantumlEncoder.encode(this.plantUmlStyling() + text)
     this.setState({ encodedUml })
     console.log(
       `http://${window.location.hostname}:8080/svg/${this.state.encodedUml}`
@@ -58,7 +68,7 @@ class App extends Component {
       <div className="app">
         <nav className="header">わいわいUML!</nav>
         <div className="container">
-          <textarea id="codearea" />
+          <textarea id="codearea" onChange={event => this.handleTextUpdate(event.target.value)}/>
           <div className="uml">
             <img
               src={`http://${window.location.hostname}:8080/svg/${
