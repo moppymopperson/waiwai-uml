@@ -78,7 +78,8 @@ class App extends Component {
             />
           </div>
         </div>
-        <div className="footer">Copyright Erik Hornberger, EExT LLC, 2018</div>
+        <div className="footer"><div><a href="http://plantuml.com/class-diagram" target="_blank" rel="noopener noreferrer">Markdown Cheat Sheet</a></div>
+        Copyright Erik Hornberger, EExT LLC, 2018</div>
       </div>
     )
   }
