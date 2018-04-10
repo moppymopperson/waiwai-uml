@@ -19,6 +19,8 @@ services:
   puml:
     container_name: waiwai-puml
     image: plantuml/plantuml-server:jetty
+    environment:
+      - "JAVA_OPTS=-Xmx512000000" # Increase memory to 512MG
     ports:
       - "8080:8080"
 
