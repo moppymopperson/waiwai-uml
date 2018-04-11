@@ -1,5 +1,5 @@
 # Wai Wai UML
-Wai Wai UML is an experiment to in mob UML design. Each person in the room has
+Wai Wai UML is an experiment in mob UML design. Each person in the room has
 the same page open on their computer, and all members can interactively edit
 the Plant UMLi markdown at anytime, resulting in an automatic realtime update
 on all other user's screens.
