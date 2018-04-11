@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { UnControlled as ReactCodeMirror } from 'react-codemirror2'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/mode/markdown/markdown'
+import 'codemirror/keymap/vim.js'
 import './App.css'
 import icon from './kangaroo-128.png'
 import plantumlEncoder from 'plantuml-encoder'
@@ -15,7 +16,7 @@ import yMap from '../node_modules/y-map/dist/y-map.js'
 Y.extend(yMap, yArray, yText, yWebsocketsClient, yMemory)
 
 class App extends Component {
-  state = { encodedUml: '' }
+  state = { encodedUml: '', vimMode: false }
 
   componentDidMount() {
     this.handleTextUpdate = debounce(this.handleTextUpdate, 1000)
@@ -74,14 +75,23 @@ class App extends Component {
       mode: 'markdown',
       lineNumbers: true,
       tabSize: 2,
-      autoCloseBrackets: true
     }
   }
 
   render() {
     return (
       <div className="app">
-        <nav className="header"><div><img src={icon} height={24} alt={'icon'} /><div>わいわい UML!</div></div></nav>
+        <nav className="header">
+          <div>
+            <img src={icon} height={24} alt={'icon'} />
+            <div>わいわい UML!</div>
+          </div>
+          <button onClick={() => {
+            console.log(this.state.vimMode)
+            this.editor.setOption('keyMap', !this.state.vimMode ? 'vim' : 'default')
+            this.setState(state => ({ vimMode: !state.vimMode }))
+          }}>VIM Mode: {this.state.vimMode ? 'ON' : 'OFF'}</button>
+        </nav>
         <div className="container">
           <ReactCodeMirror
             value={this.state.code}
