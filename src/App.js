@@ -41,7 +41,7 @@ class App extends Component {
       connector: {
         name: 'websockets-client', // use the websockets connector
         url: `http://${window.location.hostname}:1234`, // The signalling server's address
-        room: 'my_room' // Instances connected to the same room share data
+        room: window.location.pathname // Instances connected to the same room share data
       },
       share: {
         editorText: 'Text'
@@ -49,6 +49,7 @@ class App extends Component {
       sourceDir: 'node_modules' // where the modules are (browser only)
     })
       .then(y => {
+        console.log(`Joined room: ${y.options.connector.room}`)
         console.log('Yjs instance ready!')
         this.handleTextUpdate(y.share.editorText.toString())
         y.share.editorText.bind(this.editor)

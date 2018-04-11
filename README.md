@@ -9,7 +9,7 @@ and iterate on design ideas. If you try it out, please give me your feedback!
 
 ## Demo
 If you're lucky, there might be a live demo of WaiWaiUML running at 
-[waiwaiuml.live](www.waiwaiuml.live). If not, you'll have to run it yourself
+[waiwaiuml.live](http://www.waiwaiuml.live). If not, you'll have to run it yourself
 in docker-compose to check it out.
 
 ![WaiWaiUMLDemo.gif](WaiWaiUMLDemo.gif)
