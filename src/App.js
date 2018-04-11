@@ -5,6 +5,7 @@ import 'codemirror/mode/markdown/markdown'
 import './App.css'
 import icon from './kangaroo-128.png'
 import plantumlEncoder from 'plantuml-encoder'
+import debounce from 'debounce'
 import Y from '../node_modules/yjs/dist/y.js'
 import yWebsocketsClient from '../node_modules/y-websockets-client/dist/y-websockets-client.js'
 import yMemory from '../node_modules/y-memory/dist/y-memory.js'
@@ -17,6 +18,7 @@ class App extends Component {
   state = { encodedUml: '' }
 
   componentDidMount() {
+    this.handleTextUpdate = debounce(this.handleTextUpdate, 1000)
     this.joinRoom()
   }
 
