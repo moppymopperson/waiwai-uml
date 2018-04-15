@@ -60,6 +60,7 @@ button {
 }
 
 .CodeMirror {
+  text-align: left;
   height: 100%;
 }
 
