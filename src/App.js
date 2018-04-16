@@ -69,7 +69,7 @@ class App extends Component {
       },
       connector: {
         name: 'websockets-client', // use the websockets connector
-        url: `http://${window.location.hostname}:1234`, // The signalling server's address
+        url: `ws://${window.location.hostname}:1234`, // The signalling server's address
         room: window.location.pathname // Instances connected to the same room share data
       },
       share: {
