@@ -21,7 +21,6 @@ Y.extend(yMap, yArray, yText, yWebsocketsClient, yMemory)
  * output.
  */
 class App extends Component {
-
   /**
    * State holds the latest version of the users' encoded
    * PlantUML markdown as well as some user preference data
@@ -68,14 +67,24 @@ class App extends Component {
       BackgroundColor White
       BorderColor #0078BF
     }
+    skinparam BoundaryBorderColor #0078BF
+    skinparam BoundaryBackgroundColor White
+    skinparam ControlBorderColor #0078BF
+    skinparam ControlBackgroundColor White
+    skinparam EntityBorderColor #0078BF
+    skinparam EntityBackgroundColor White
+    skinparam DatabaseBorderColor #0078BF
+    skinparam DatabaseBackgroundColor White
+    skinparam CollectionsBorderColor #0078BF
+    skinparam CollectionsBackgroundColor White
     `
   }
 
   /**
    * Connects to the websocket server responsible for propogating updates
    * across users and sets up a single shared variable.
-   * 
-   * We use an in memory database for speed and simplicity. 
+   *
+   * We use an in memory database for speed and simplicity.
    * Users will be put in a room based on the URL they are at. Users in the
    * same room will be able to see and edit the same data, but users in
    * different rooms will be able to work independently.
@@ -116,11 +125,11 @@ class App extends Component {
    * PlantUML markdown that can be sent to a PlantUML server for processing. We
    * then update the state wit the latest value, which will be used by an
    * <img> tag to fetch an SVG image from the server.
-   * 
+   *
    * Note that this method gets debounced in `componentDidMount`. Not doing so
    * results in a heavy load on the server that can cause it to crash with just
    * one client.
-   * 
+   *
    * @param {string} text PlantUML markdown
    */
   handleTextUpdate(text) {
@@ -137,7 +146,7 @@ class App extends Component {
     return {
       mode: 'markdown',
       lineNumbers: true,
-      tabSize: 2,
+      tabSize: 2
     }
   }
 
@@ -149,11 +158,18 @@ class App extends Component {
             <img src={icon} height={24} alt={'icon'} />
             <div>わいわい UML!</div>
           </div>
-          <button onClick={() => {
-            console.log(this.state.vimMode)
-            this.editor.setOption('keyMap', !this.state.vimMode ? 'vim' : 'default')
-            this.setState(state => ({ vimMode: !state.vimMode }))
-          }}>VIM Mode: {this.state.vimMode ? 'ON' : 'OFF'}</button>
+          <button
+            onClick={() => {
+              console.log(this.state.vimMode)
+              this.editor.setOption(
+                'keyMap',
+                !this.state.vimMode ? 'vim' : 'default'
+              )
+              this.setState(state => ({ vimMode: !state.vimMode }))
+            }}
+          >
+            VIM Mode: {this.state.vimMode ? 'ON' : 'OFF'}
+          </button>
         </nav>
         <div className="container">
           <div className="vert">
@@ -170,16 +186,18 @@ class App extends Component {
             <img
               src={`http://${window.location.hostname}:8080/svg/${
                 this.state.encodedUml
-                }`}
+              }`}
               alt="uml here"
             />
           </div>
         </div>
         <div className="footer">
           <div>
-            <a href="http://plantuml.com/class-diagram"
+            <a
+              href="http://plantuml.com/class-diagram"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               Markdown Cheat Sheet
             </a>
           </div>
