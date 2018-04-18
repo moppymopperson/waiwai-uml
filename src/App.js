@@ -49,6 +49,25 @@ class App extends Component {
       BorderColor #0078BF
       BackgroundColor White
     }
+    skinparam sequence {
+      ArrowColor #0078BF
+      LifeLineBorderColor #0078BF
+      LifeLineBackgroundColor #0078BF 
+      
+      ParticipantBorderColor #0078BF 
+      ParticipantBackgroundColor White
+      
+      ActorBorderColor #0078BF
+      ActorBackgroundColor White
+    }
+    skinparam usecase {
+      BackgroundColor White
+	    BorderColor #0078BF
+    }
+    skinparam state {
+      BackgroundColor White
+      BorderColor #0078BF
+    }
     `
   }
 
